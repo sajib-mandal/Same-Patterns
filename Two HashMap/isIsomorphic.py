@@ -4,9 +4,9 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         if len(s) != len(t):
-            return False
+            return False                 
         mapST, mapTS = {}, {}
-        for c1, c2 in zip(s, t):
+        for c1, c2 in zip(s, t):       # it's easy
             if ((c1 in mapST and mapST[c1] != c2) or 
                 (c2 in mapTS and mapTS[c2] != c1)):
                 return False
