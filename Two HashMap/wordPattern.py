@@ -1,29 +1,32 @@
-# 205. Isomorphic Strings
+#  290. Word Pattern
+
 
 class Solution:
-    def isIsomorphic(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
-        mapST, mapTS = {}, {}
-        for c1, c2 in zip(s, t):     # It's easy
-            if ((c1 in mapST and mapST[c1] != c2) or 
-                (c2 in mapTS and mapTS[c2] != c1)):
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        words = s.split(" ")
+        if len(words) != len(pattern):
+            return False 
+        charToWord = {}
+        wordToChar = {}
+        for c, w in zip(pattern, words):
+            if ((c in charToWord and charToWord[c] != w) or 
+                (w in wordToChar and wordToChar[w] != c)):
                 return False
-            mapST[c1] = c2
-            mapTS[c2] = c1
+            charToWord[c] = w
+            wordToChar[w] = c
         return True
         
         
-        if len(s) != len(t):
+        words = s.split(" ")
+        if len(words) != len(pattern):
             return False
-        mapST = {}
-        mapTS = {}
-        
-        for i in range(len(s)):    # Both are same size
-            c1, c2 = s[i], t[i]
-            if ((c1 in mapST and mapST[c1] != c2) or
-                (c2 in mapTS and mapTS[c2] != c1)):
+        charToWord = {}
+        wordToChar = {}
+        for i in range(len(words)):    # Both are same size
+            c1, c2 = pattern[i], words[i]
+            if ((c1 in charToWord and charToWord[c1] != c2) or
+                (c2 in wordToChar and wordToChar[c2] != c1)):
                 return False
-            mapST[c1] = c2
-            mapTS[c2] = c1
+            charToWord[c1] = c2
+            wordToChar[c2] = c1
         return True
