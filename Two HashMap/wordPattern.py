@@ -8,7 +8,7 @@ class Solution:
             return False 
         charToWord = {}
         wordToChar = {}
-        for c, w in zip(pattern, words):
+        for c, w in zip(pattern, words):      # It's easy
             if ((c in charToWord and charToWord[c] != w) or 
                 (w in wordToChar and wordToChar[w] != c)):
                 return False
